@@ -1,0 +1,61 @@
+:root {
+	--unreadColor: RGB(247, 190, 0);
+}
+
+/* A csatornanév előtt olvasatlan jelölő */
+.unreadImportant__2ea32 {
+    background-color: var(--unreadColor) !important;
+}
+
+/* Olvasatlan csatornanév */
+.wrapper__2ea32.modeUnreadImportant__2ea32 .name__2ea32 {
+	color: var(--unreadColor) !important;
+	font-weight: bold;
+}
+
+/* Piros pötty az olvasatlan üzenetet tartalmazó csatornanév után */
+.wrapper__2ea32.modeUnreadImportant__2ea32 .name__2ea32 {
+    position: relative;
+    display: inline-block; /* Constrain width to text content */
+    padding-right: 15px; /* Space for circle + spacing */
+}
+
+.wrapper__2ea32.modeUnreadImportant__2ea32 .name__2ea32::after {
+    content: '';
+    position: absolute;
+    background: #ff0000;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-left: 8px; /* Space between text and circle */
+}
+
+/* Üzenetek buborékosítása */
+li.messageListItem__5126c {
+    border: 1px solid rgb(200,200,200);
+    margin: 4px 8px;
+    border-radius: 8px;
+	box-shadow: 0 2px 4px RGB(0, 0, 0, 0.3);
+}
+
+/* A szerver előtti jelölő, hogy olvasatlan üzenet van */
+.pill_e5445c.wrapper__58105:has(.item__58105[style*="height: 8px"]) {
+    left: 10px;
+    top: -5px;
+    width: 16px;
+    height: 16px;
+    background-color: red;
+    border-radius: 50%;
+    z-index: 9;
+}
+
+
+.pill_e5445c.wrapper__58105 .item__58105[style*="height: 8px"] {
+    display: none;
+}
+
+#---new-messages-bar {
+	border: 3px solid red !important;
+}
