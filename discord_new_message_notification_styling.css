@@ -1,61 +1,54 @@
 :root {
-	--unreadColor: RGB(247, 190, 0);
+    --unreadColor: RGB(247, 190, 0);
 }
 
-/* A csatornanév előtt olvasatlan jelölő */
-.unreadImportant__2ea32 {
+/* 1. Csatorna olvasatlan jelző (bal oldali kis csík) */
+[class*="unreadImportant"] {
     background-color: var(--unreadColor) !important;
 }
 
-/* Olvasatlan csatornanév */
-.wrapper__2ea32.modeUnreadImportant__2ea32 .name__2ea32 {
-	color: var(--unreadColor) !important;
-	font-weight: bold;
-}
-
-/* Piros pötty az olvasatlan üzenetet tartalmazó csatornanév után */
-.wrapper__2ea32.modeUnreadImportant__2ea32 .name__2ea32 {
+/* 2. Olvasatlan csatornanév színe és vastagsága */
+[class*="modeUnreadImportant"] [class*="name"] {
+    color: var(--unreadColor) !important;
+    font-weight: bold;
     position: relative;
-    display: inline-block; /* Constrain width to text content */
-    padding-right: 15px; /* Space for circle + spacing */
+    display: inline-block;
+    padding-right: 15px;
 }
 
-.wrapper__2ea32.modeUnreadImportant__2ea32 .name__2ea32::after {
+/* 3. Piros pötty a csatornanév után */
+[class*="modeUnreadImportant"] [class*="name"]::after {
     content: '';
     position: absolute;
     background: #ff0000;
-    width: 14px;
-    height: 14px;
+    width: 10px;
+    height: 10px;
     border-radius: 50%;
     top: 50%;
     transform: translateY(-50%);
-    margin-left: 8px; /* Space between text and circle */
+    margin-left: 8px;
 }
 
-/* Üzenetek buborékosítása */
-li.messageListItem__5126c {
-    border: 1px solid rgb(200,200,200);
-    margin: 4px 8px;
-    border-radius: 8px;
-	box-shadow: 0 2px 4px RGB(0, 0, 0, 0.3);
+/* 4. Üzenetek buborékosítása (kártya dizájn) */
+[class*="messageListItem"] {
+    border: 1px solid rgba(200, 200, 200, 0.4);
+    margin: 6px 12px !important;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    background: rgba(255, 255, 255, 0.02); /* Enyhe háttér a sötét módhoz */
 }
 
-/* A szerver előtti jelölő, hogy olvasatlan üzenet van */
-.pill_e5445c.wrapper__58105:has(.item__58105[style*="height: 8px"]) {
-    left: 10px;
-    top: -5px;
-    width: 16px;
-    height: 16px;
-    background-color: red;
+/* 5. Szerver ikon melletti olvasatlan "pill" (piros körré alakítva) */
+[class*="pill"] [class*="item"][style*="height: 8px"] {
+    background-color: red !important;
+    width: 12px !important;
+    height: 12px !important;
     border-radius: 50%;
-    z-index: 9;
+    margin-left: 2px;
 }
 
-
-.pill_e5445c.wrapper__58105 .item__58105[style*="height: 8px"] {
-    display: none;
-}
-
+/* 6. Új üzenetek választóvonal (piros keret) */
 #---new-messages-bar {
-	border: 3px solid red !important;
+    border: 2px solid red !important;
+    border-radius: 4px;
 }
