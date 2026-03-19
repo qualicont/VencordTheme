@@ -1,22 +1,28 @@
+/**
+ * @name Custom Bubble Theme
+ * @author User
+ * @version 1.0.0
+ */
+
 :root {
-    --unreadColor: RGB(247, 190, 0);
+    --unreadColor: rgb(247, 190, 0);
 }
 
-/* 1. Csatorna olvasatlan jelző (bal oldali kis csík) */
+/* 1. Csatorna olvasatlan jelző */
 [class*="unreadImportant"] {
     background-color: var(--unreadColor) !important;
 }
 
-/* 2. Olvasatlan csatornanév színe és vastagsága */
+/* 2. Olvasatlan csatornanév */
 [class*="modeUnreadImportant"] [class*="name"] {
     color: var(--unreadColor) !important;
-    font-weight: bold;
+    font-weight: bold !important;
     position: relative;
     display: inline-block;
     padding-right: 15px;
 }
 
-/* 3. Piros pötty a csatornanév után */
+/* 3. Piros pötty */
 [class*="modeUnreadImportant"] [class*="name"]::after {
     content: '';
     position: absolute;
@@ -29,44 +35,27 @@
     margin-left: 8px;
 }
 
-/* 4. Üzenetek buborékosítása (kártya dizájn) */
+/* 4. Alap üzenet konténer módosítása */
 [class*="messageListItem"] {
-    border: 1px solid rgba(200, 200, 200, 0.4);
-    margin: 6px 12px !important;
-    border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-    background: rgba(255, 255, 255, 0.02); /* Enyhe háttér a sötét módhoz */
+    margin: 6px 0 !important;
+    padding: 0 !important;
 }
 
-/* 5. Szerver ikon melletti olvasatlan "pill" (piros körré alakítva) */
-[class*="pill"] [class*="item"][style*="height: 8px"] {
-    background-color: red !important;
-    width: 12px !important;
-    height: 12px !important;
-    border-radius: 50%;
-    margin-left: 2px;
-}
-
-/* 6. Új üzenetek választóvonal (piros keret) */
-#---new-messages-bar {
-    border: 2px solid red !important;
-    border-radius: 4px;
-}
 /* ÉN (Szürke buborék, jobbra) */
 [data-is-self="true"] {
     margin-left: auto !important;
     margin-right: 12px !important;
     width: fit-content !important;
     max-width: 85%;
-    background: rgba(100, 100, 100, 0.08) !important;
+    background: rgba(150, 150, 150, 0.15) !important;
     border: 1px solid rgba(150, 150, 150, 0.2) !important;
     border-radius: 15px 15px 0px 15px !important;
     display: flex !important;
     flex-direction: column !important;
-    align-items: flex-start !important; /* Ez kényszeríti a tartalmat balra a buborékon belül */
+    align-items: flex-start !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Én szövegem most már BALRA igazítva a buborékon belül */
 [data-is-self="true"] [class*="contents"] {
     text-align: left !important;
     width: 100%;
@@ -78,19 +67,34 @@
     margin-left: 12px !important;
     width: fit-content !important;
     max-width: 85%;
-    background: rgba(0, 120, 255, 0.1) !important; /* A szép kék háttér */
-    border: 1px solid rgba(0, 120, 255, 0.2) !important;
+    background: rgba(0, 120, 255, 0.15) !important;
+    border: 1px solid rgba(0, 120, 255, 0.3) !important;
     border-radius: 15px 15px 15px 0px !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Mások szövege balra igazítva */
 [data-is-self="false"] [class*="contents"] {
-    text-align: left;
+    text-align: left !important;
     width: 100%;
 }
 
-/* Ha sárga a háttér (említés), akkor felejtse el a kéket/szürkét */
-[class*="mentioned"] {
-    background-color: rgba(253, 228, 0, 0.397) !important;
+/* 5. Szerver ikon melletti piros pötty */
+[class*="pill"] [class*="item"][style*="height: 8px"] {
+    background-color: red !important;
+    width: 12px !important;
+    height: 12px !important;
+    border-radius: 50%;
+}
+
+/* 6. Új üzenetek választóvonal */
+#---new-messages-bar {
+    border: 2px solid red !important;
+    border-radius: 4px;
+}
+
+/* Említés (Mention) - felülbírálja a kéket/szürkét */
+[class*="messageListItem"] [class*="mentioned"] {
+    background-color: rgba(253, 228, 0, 0.25) !important;
     border: 2px solid #ffe600 !important;
+    border-radius: 10px !important;
 }
