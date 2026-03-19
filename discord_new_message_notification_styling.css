@@ -52,3 +52,45 @@
     border: 2px solid red !important;
     border-radius: 4px;
 }
+/* ÉN (Szürke buborék, jobbra) */
+[data-is-self="true"] {
+    margin-left: auto !important;
+    margin-right: 12px !important;
+    width: fit-content !important;
+    max-width: 85%;
+    background: rgba(100, 100, 100, 0.08) !important;
+    border: 1px solid rgba(150, 150, 150, 0.2) !important;
+    border-radius: 15px 15px 0px 15px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important; /* Ez kényszeríti a tartalmat balra a buborékon belül */
+}
+
+/* Én szövegem most már BALRA igazítva a buborékon belül */
+[data-is-self="true"] [class*="contents"] {
+    text-align: left !important;
+    width: 100%;
+}
+
+/* MINDENKI MÁS (Kék buborék, balra) */
+[data-is-self="false"] {
+    margin-right: auto !important;
+    margin-left: 12px !important;
+    width: fit-content !important;
+    max-width: 85%;
+    background: rgba(0, 120, 255, 0.1) !important; /* A szép kék háttér */
+    border: 1px solid rgba(0, 120, 255, 0.2) !important;
+    border-radius: 15px 15px 15px 0px !important;
+}
+
+/* Mások szövege balra igazítva */
+[data-is-self="false"] [class*="contents"] {
+    text-align: left;
+    width: 100%;
+}
+
+/* Ha sárga a háttér (említés), akkor felejtse el a kéket/szürkét */
+[class*="mentioned"] {
+    background-color: rgba(253, 228, 0, 0.397) !important;
+    border: 2px solid #ffe600 !important;
+}
