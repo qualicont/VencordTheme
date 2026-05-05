@@ -79,12 +79,22 @@
     width: 100%;
 }
 
-/* 5. Szerver ikon melletti piros pötty */
-[class*="pill"] [class*="item"][style*="height: 8px"] {
-    background-color: red !important;
-    width: 12px !important;
-    height: 12px !important;
-    border-radius: 50%;
+/* 5. SZERVER IKON MELLETTI JELZŐ */
+/* Alapból minden jelző legyen piros a bal sávban */
+[class^="pill_"] span {
+    background-color: #ff0000 !important;
+}
+
+/* KIVÉTEL: Ha a jelző magasabb, mint 30 pixel (tehát az aktív szerver), akkor legyen fehér/szürke */
+[class^="pill_"] span[style*="height: 3"], 
+[class^="pill_"] span[style*="height: 4"] {
+    background-color: var(--header-primary) !important;
+}
+
+/* Kifejezett javítás az olvasatlan (kicsi) pöttyre */
+[class^="item_"][style*="height: 8px"],
+[class^="item_"][style*="height: 4px"] {
+    background-color: #ff0000 !important;
 }
 
 /* 6. Új üzenetek választóvonal */
