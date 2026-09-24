@@ -80,21 +80,20 @@
 }
 
 /* 5. SZERVER IKON MELLETTI JELZŐ */
-/* Alapból minden jelző legyen piros a bal sávban */
-[class^="pill_"] span {
+/* Minden kis pötty (olvasatlan) legyen piros a bal sávban */
+[class*="pill_"] [class*="item_"] {
     background-color: #ff0000 !important;
 }
 
-/* KIVÉTEL: Ha a jelző magasabb, mint 30 pixel (tehát az aktív szerver), akkor legyen fehér/szürke */
-[class^="pill_"] span[style*="height: 3"], 
-[class^="pill_"] span[style*="height: 4"] {
+/* KIVÉTEL: Ha ki van választva a szerver (vagyis a pötty magassága 40px vagy nagyobb), legyen fehér/szürke */
+[class*="pill_"] [class*="item_"][style*="height: 40"],
+[class*="pill_"] [class*="item_"][style*="height: 3"] {
     background-color: var(--header-primary) !important;
 }
 
-/* Kifejezett javítás az olvasatlan (kicsi) pöttyre */
-[class^="item_"][style*="height: 8px"],
-[class^="item_"][style*="height: 4px"] {
-    background-color: #ff0000 !important;
+/* Ha ráviszed az egeret (hover), akkor is kapjon egy világosabb színt */
+[class*="pill_"] [class*="item_"]:hover {
+    background-color: var(--header-primary) !important;
 }
 
 /* 6. Új üzenetek választóvonal */
