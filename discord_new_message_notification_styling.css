@@ -79,15 +79,18 @@
     width: 100%;
 }
 
-/* 5. SZERVER IKON MELLETTI JELZŐ (DRASZTIKUS FIX) */
-/* Bármilyen elem, ami a bal sávban lévő kis jelző (pill), kényszerítve piros lesz */
-[class*="listItem_"] [class*="pill_"] [class*="item_"] {
+/* 5. SZERVER IKON MELLETTI JELZŐ (KIFEJEZETTEN VENCORDHOZ) */
+/* Elkapja az összes oldalsó jelzősávban lévő kis pöttyöt/csíkot */
+nav[aria-label="Kiszolgálók"] [slot="badge"] span,
+nav[aria-label="Servers"] [slot="badge"] span,
+div[class*="listItem"] > div[class*="pill"] > span {
     background-color: #ff0000 !important;
 }
 
-/* Kivétel: Amikor a szerver éppen aktív (ki van választva), legyen fehér */
-[class*="listItem_"] [class*="pill_"] [class*="item_"][style*="height: 40"],
-[class*="listItem_"] [class*="pill_"] [class*="item_"][class*="selected_"] {
+/* Kivétel: ha a szerver aktív/ki van választva, váltson vissza fehérre */
+nav[aria-label="Kiszolgálók"] [slot="badge"] span[style*="height: 40"],
+nav[aria-label="Servers"] [slot="badge"] span[style*="height: 40"],
+div[class*="listItem"] > div[class*="pill"] > span[class*="selected"] {
     background-color: #ffffff !important;
 }
 
