@@ -79,20 +79,15 @@
     width: 100%;
 }
 
-/* 5. SZERVER IKON MELLETTI JELZŐ (ÚJ, BIZTOS JAVÍTÁS) */
-/* Közvetlenül a Discord saját változóját kényszerítjük pirosra az olvasatlan pöttyhöz */
-:root {
-    --brand-experiment: #ff0000 !important;
-    --control-brand-foreground: #ff0000 !important;
-}
-
-/* Kifejezetten a bal oldali sáv olvasatlan (unread) pöttyének színezése */
-[class*="pill_"] [class*="item_"] {
+/* 5. SZERVER IKON MELLETTI JELZŐ (DRASZTIKUS FIX) */
+/* Bármilyen elem, ami a bal sávban lévő kis jelző (pill), kényszerítve piros lesz */
+[class*="listItem_"] [class*="pill_"] [class*="item_"] {
     background-color: #ff0000 !important;
 }
 
-/* HA A SZERVER KI VAN VÁLASZTVA (Aktív szoba): Akkor váltson vissza fehérre */
-[class*="pill_"] [class*="item_"][class*="selected_"] {
+/* Kivétel: Amikor a szerver éppen aktív (ki van választva), legyen fehér */
+[class*="listItem_"] [class*="pill_"] [class*="item_"][style*="height: 40"],
+[class*="listItem_"] [class*="pill_"] [class*="item_"][class*="selected_"] {
     background-color: #ffffff !important;
 }
 
