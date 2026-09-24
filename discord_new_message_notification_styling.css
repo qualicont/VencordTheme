@@ -79,19 +79,22 @@
     width: 100%;
 }
 
-/* 5. SZERVER IKON MELLETTI JELZŐ (KIFEJEZETTEN VENCORDHOZ) */
-/* Elkapja az összes oldalsó jelzősávban lévő kis pöttyöt/csíkot */
-nav[aria-label="Kiszolgálók"] [slot="badge"] span,
-nav[aria-label="Servers"] [slot="badge"] span,
-div[class*="listItem"] > div[class*="pill"] > span {
+/* 5. SZERVER IKON MELLETTI JELZŐ */
+/* Alapból minden jelző legyen piros a bal sávban */
+[class^="pill_"] span {
     background-color: #ff0000 !important;
 }
 
-/* Kivétel: ha a szerver aktív/ki van választva, váltson vissza fehérre */
-nav[aria-label="Kiszolgálók"] [slot="badge"] span[style*="height: 40"],
-nav[aria-label="Servers"] [slot="badge"] span[style*="height: 40"],
-div[class*="listItem"] > div[class*="pill"] > span[class*="selected"] {
-    background-color: #ffffff !important;
+/* KIVÉTEL: Ha a jelző magasabb, mint 30 pixel (tehát az aktív szerver), akkor legyen fehér/szürke */
+[class^="pill_"] span[style*="height: 3"], 
+[class^="pill_"] span[style*="height: 4"] {
+    background-color: var(--header-primary) !important;
+}
+
+/* Kifejezett javítás az olvasatlan (kicsi) pöttyre */
+[class^="item_"][style*="height: 8px"],
+[class^="item_"][style*="height: 4px"] {
+    background-color: #ff0000 !important;
 }
 
 /* 6. Új üzenetek választóvonal */
@@ -105,11 +108,4 @@ div[class*="listItem"] > div[class*="pill"] > span[class*="selected"] {
     background-color: rgba(253, 228, 0, 0.25) !important;
     border: 2px solid #ffe600 !important;
     border-radius: 10px !important;
-}
-
-css/* Ez felülír minden online témát, mert a root szinten kényszeríti a piros színt */
-:root {
-    --brand-experiment: #ff0000 !important;
-    --status-danger: #ff0000 !important;
-    --text-danger: #ff0000 !important;
 }
