@@ -106,3 +106,10 @@ div[class*="listItem"] > div[class*="pill"] > span[class*="selected"] {
     border: 2px solid #ffe600 !important;
     border-radius: 10px !important;
 }
+
+css/* Ez felülír minden online témát, mert a root szinten kényszeríti a piros színt */
+:root {
+    --brand-experiment: #ff0000 !important;
+    --status-danger: #ff0000 !important;
+    --text-danger: #ff0000 !important;
+}
