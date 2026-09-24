@@ -79,21 +79,21 @@
     width: 100%;
 }
 
-/* 5. SZERVER IKON MELLETTI JELZŐ */
-/* Minden kis pötty (olvasatlan) legyen piros a bal sávban */
+/* 5. SZERVER IKON MELLETTI JELZŐ (ÚJ, BIZTOS JAVÍTÁS) */
+/* Közvetlenül a Discord saját változóját kényszerítjük pirosra az olvasatlan pöttyhöz */
+:root {
+    --brand-experiment: #ff0000 !important;
+    --control-brand-foreground: #ff0000 !important;
+}
+
+/* Kifejezetten a bal oldali sáv olvasatlan (unread) pöttyének színezése */
 [class*="pill_"] [class*="item_"] {
     background-color: #ff0000 !important;
 }
 
-/* KIVÉTEL: Ha ki van választva a szerver (vagyis a pötty magassága 40px vagy nagyobb), legyen fehér/szürke */
-[class*="pill_"] [class*="item_"][style*="height: 40"],
-[class*="pill_"] [class*="item_"][style*="height: 3"] {
-    background-color: var(--header-primary) !important;
-}
-
-/* Ha ráviszed az egeret (hover), akkor is kapjon egy világosabb színt */
-[class*="pill_"] [class*="item_"]:hover {
-    background-color: var(--header-primary) !important;
+/* HA A SZERVER KI VAN VÁLASZTVA (Aktív szoba): Akkor váltson vissza fehérre */
+[class*="pill_"] [class*="item_"][class*="selected_"] {
+    background-color: #ffffff !important;
 }
 
 /* 6. Új üzenetek választóvonal */
